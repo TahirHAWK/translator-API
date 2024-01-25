@@ -1,3 +1,4 @@
+import time
 from flask import Flask, request, jsonify
 from googletrans import Translator
 
@@ -10,8 +11,11 @@ def translate():
     string = request.form.get('string')
 
     # Translate the string
-    result = translator.translate('I  LOVE YOU', dest='de')
+    result = translator.translate('Love you', dest='de')
     translated_string = result.text
+
+    # Delay for a second
+    time.sleep(1)
 
     # Return the translated string
     return jsonify({'translated_string': translated_string})
